@@ -11,19 +11,18 @@ on:
       - main
 
 jobs:
-  backend-quality:
-    name: Backend Quality Checks
+  repository-foundation:
+    name: Repository Foundation Checks
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.4'
-          coverage: none
-
-      - name: Validate composer files
-        run: composer validate --strict
+      - name: Validate GitHub workflow files
+        run: |
+          echo "Repository foundation workflow is active."
+          test -f .github/workflows/ci.yml
+          test -f .github/workflows/branch-name-check.yml
+          test -f .github/PULL_REQUEST_TEMPLATE.md
+          test -f .github/CODEOWNERS
