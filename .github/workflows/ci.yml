@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  push:
+    branches:
+      - develop
+      - main
+
+jobs:
+  repository-foundation:
+    name: Repository Foundation Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate GitHub workflow files
+        run: |
+          echo "Repository foundation workflow is active."
+          test -f .github/workflows/ci.yml
+          test -f .github/workflows/branch-name-check.yml
+          test -f .github/PULL_REQUEST_TEMPLATE.md
+          test -f .github/CODEOWNERS
