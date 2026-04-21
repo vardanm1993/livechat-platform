@@ -1,16 +1,17 @@
 # livechat-platform
 
 [![CI](https://github.com/vardanm1993/livechat-platform/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/vardanm1993/livechat-platform/actions/workflows/ci.yml)
-[![Branch Name Check](https://github.com/vardanm1993/livechat-platform/actions/workflows/branch-name-check.yml/badge.svg?branch=develop)](https://github.com/vardanm1993/livechat-platform/actions/workflows/branch-name-check.yml)
 [![PHP](https://img.shields.io/badge/PHP-8.5-777BB4?logo=php&logoColor=white)](#tech-stack)
 [![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?logo=laravel&logoColor=white)](#tech-stack)
+[![Vue](https://img.shields.io/badge/Vue-3-42b883?logo=vue.js&logoColor=white)](#tech-stack)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](#tech-stack)
+[![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?logo=docker&logoColor=white)](#tech-stack)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-active%20bootstrap-blue)](#status)
 
-Professional live chat platform with a modular, scalable architecture.
+Modern live chat platform built with Laravel, Docker, and a scalable application architecture.
 
 ## Overview
-`livechat-platform` is being built as a modern Laravel-based communication product with a clean application core, strict repository discipline, and a future-ready package extraction strategy.
+`livechat-platform` is a modern chat application built on Laravel with a clean core architecture, strict engineering workflow, and a long-term modularization strategy.
 
 ## Status
 The project is currently in the bootstrap phase.
@@ -72,20 +73,17 @@ sail artisan migrate
 
 ## Quality standards
 - GitHub Actions
-- branch name validation
-- backend CI expansion
-- frontend CI checks when relevant
+- backend CI
+- frontend CI when relevant
 - documentation-first decisions for version-sensitive implementation
 
 ## Roadmap
-
-### Short-term priorities
-- repository normalization
+Short-term priorities:
 - CI expansion
 - frontend foundation
 - application architecture baseline
 
-### Long-term direction
+Long-term direction:
 - stable module extraction into reusable packages where justified
 
 ## Security
