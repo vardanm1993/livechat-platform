@@ -5,7 +5,7 @@
     "keywords": ["laravel", "chat", "inertia", "vue", "typescript", "realtime"],
     "license": "MIT",
     "require": {
-        "php": "^8.5",
+        "php": "^8.3",
         "inertiajs/inertia-laravel": "^3.0",
         "laravel/framework": "^13.0",
         "laravel/tinker": "^3.0"
