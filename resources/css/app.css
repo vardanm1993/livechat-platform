@@ -4,8 +4,36 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@source '../**/*.ts';
+@source '../**/*.vue';
 
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-brand-50: oklch(0.97 0.015 196);
+    --color-brand-100: oklch(0.93 0.03 196);
+    --color-brand-500: oklch(0.61 0.12 209);
+    --color-brand-700: oklch(0.43 0.09 223);
+    --color-ink-950: oklch(0.17 0.02 250);
+    --color-surface-50: oklch(0.99 0.004 106);
+    --color-surface-100: oklch(0.97 0.006 106);
+    --color-surface-200: oklch(0.93 0.01 106);
+}
+
+@layer base {
+    html {
+        color-scheme: light;
+    }
+
+    body {
+        min-height: 100vh;
+        background: radial-gradient(circle at top left, color-mix(in oklab, var(--color-brand-100) 60%, white) 0%, transparent 34%),
+        linear-gradient(180deg, var(--color-surface-50) 0%, white 45%, var(--color-surface-100) 100%);
+        color: var(--color-ink-950);
+        font-family: var(--font-sans);
+    }
+
+    #app {
+        min-height: 100vh;
+    }
 }
