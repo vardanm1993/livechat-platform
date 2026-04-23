@@ -115,6 +115,9 @@ Short-term priorities:
 Long-term direction:
 - stable module extraction into reusable packages where justified
 
+## Architecture
+See [docs/architecture/application-architecture-baseline.md](docs/architecture/application-architecture-baseline.md).
+
 ## Security
 Please do not report security issues publicly.
 
