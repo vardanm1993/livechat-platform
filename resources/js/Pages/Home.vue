@@ -3,7 +3,7 @@ import type {PageProps} from '@inertiajs/core';
 import {Head, usePage} from '@inertiajs/vue3';
 
 import AppShell from '@/Layouts/AppShell.vue';
-import type {SharedPageProps} from '@/types/app';
+import type {SharedPageProps} from '@/Types/app';
 
 interface HomeProps extends PageProps, SharedPageProps {
     stats: {
