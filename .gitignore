@@ -46,3 +46,8 @@ pnpm-debug.log*
 
 # Sail / Docker local overrides
 docker-compose.override.yml
+
+# Laravel generated cache / links
+/bootstrap/cache/*.php
+/public/hot
+/public/storage
