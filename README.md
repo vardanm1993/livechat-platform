@@ -15,18 +15,65 @@ This project is not a customer-support website widget clone. It is a trusted rea
 - Laravel
 - PostgreSQL
 - Redis
+- Docker / Laravel Sail
 - Inertia.js
 - Vue
 - TypeScript
+- Tailwind CSS
 - WebSockets
-- Realtime broadcasting
+- Laravel Reverb
+- Laravel Echo
 - Queue workers
-- Security-first authentication
 - Automated testing
+- Static analysis
 - CI/CD
 - Mobile/API support later
 - Package extraction later
 
-## Status
+## Core Capabilities
 
-Initial repository setup.
+- Secure authentication
+- Account and profile management
+- Spaces, rooms, and group communication
+- Invitations and membership management
+- Roles and permissions
+- Live messaging
+- Attachments and media handling
+- Emoji reactions
+- Read receipts and presence
+- Realtime broadcasting
+- Notifications
+- Audio/video call architecture
+- Multilingual interface
+- AI-assisted communication tools
+- Audit and security events
+- Billing and subscriptions
+- Future mobile/API foundation
+- Future package extraction
+
+## Architecture Direction
+
+Laravel acts as the central application server and source of truth.
+
+The web application is planned around Laravel, Inertia.js, Vue, and TypeScript.
+
+Realtime communication is planned around event broadcasting, Redis, queues, Laravel Reverb, and Laravel Echo.
+
+Mobile applications may be introduced later through a dedicated API layer.
+
+## Security Direction
+
+The platform is designed as a trusted communication system.
+
+Security areas include password hashing, secure sessions, authorization policies, rate limiting, CSRF protection, XSS prevention, audit logs, security events, device/session awareness, and a future deliberate encryption strategy for sensitive communication data.
+
+## Documentation
+
+- [Architecture Overview](docs/architecture/overview.md)
+- [Database Blueprint](docs/database/database-blueprint.md)
+- [Security Overview](docs/security/security-overview.md)
+- [Architecture Decisions](docs/architecture/decisions)
+
+## License
+
+License information will be added later.
