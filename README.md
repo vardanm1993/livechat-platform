@@ -290,3 +290,7 @@ Recommended branch prefixes:
 Pull requests should include a clear summary, list of changes, verification steps, and relevant security or database impact notes.
 
 The `develop` and `main` branches are intended to be protected by required CI checks.
+
+## License
+
+This project is open-sourced under the [MIT license](LICENSE).
