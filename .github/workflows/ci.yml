@@ -18,8 +18,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  backend-tests:
-    name: Backend Tests
+  backend-quality-and-tests:
+    name: Backend Quality and Tests
     runs-on: ubuntu-24.04
 
     services:
@@ -88,6 +88,15 @@ jobs:
 
       - name: Prepare application environment
         run: cp .env.example .env
+
+      - name: Run PHP code style checks
+        run: composer lint
+
+      - name: Run static analysis
+        run: composer analyse
+
+      - name: Run Rector dry-run
+        run: composer refactor:dry
 
       - name: Run database migrations
         run: php artisan migrate --force
