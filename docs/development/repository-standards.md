@@ -70,3 +70,34 @@ The repository uses:
 Architecture, database, security, and workflow decisions should be documented when they affect long-term maintenance.
 
 Documentation should be written in a professional product/project style.
+
+## Main Promotion Rule
+
+Feature, fix, documentation, test, refactor, CI, chore, and security branches must target `develop` first.
+
+The `main` branch receives only stable promotion pull requests from:
+
+- `develop`
+- `chore/promote-*`
+
+Allowed examples:
+
+```text
+feat/authentication-foundation -> develop
+fix/session-expiration -> develop
+docs/security-overview -> develop
+ci/backend-checks -> develop
+develop -> main
+chore/promote-develop-to-main -> main
+```
+
+Not allowed examples:
+
+```text
+feat/authentication-foundation -> main
+fix/session-expiration -> main
+docs/security-overview -> main
+ci/backend-checks -> main
+```
+
+This keeps `develop` as the integration branch and `main` as the stable public branch.
