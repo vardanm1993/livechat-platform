@@ -1,0 +1,166 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+language: "en-US"
+early_access: false
+tone_instructions: "Use a concise IDE-style inspection tone: direct, technical, actionable. Focus on correctness, security, maintainability, tests, and production risk."
+
+reviews:
+  profile: "chill"
+  request_changes_workflow: false
+  high_level_summary: true
+  review_status: true
+  review_details: false
+  commit_status: true
+  fail_commit_status: false
+  collapse_walkthrough: true
+  changed_files_summary: true
+  sequence_diagrams: false
+  estimate_code_review_effort: true
+  assess_linked_issues: true
+  related_issues: false
+  related_prs: false
+  suggested_labels: true
+  auto_apply_labels: false
+  suggested_reviewers: false
+  auto_assign_reviewers: false
+  in_progress_fortune: false
+  poem: false
+  enable_prompt_for_ai_agents: false
+  abort_on_close: true
+
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    auto_pause_after_reviewed_commits: 5
+    ignore_title_keywords:
+      - "wip"
+      - "draft"
+    drafts: false
+    base_branches:
+      - "develop"
+
+  finishing_touches:
+    docstrings:
+      enabled: false
+    unit_tests:
+      enabled: false
+    simplify:
+      enabled: false
+
+  path_filters:
+    - "!vendor/**"
+    - "!node_modules/**"
+    - "!public/build/**"
+    - "!storage/**"
+    - "!bootstrap/cache/**"
+    - "!coverage/**"
+    - "!**/*.min.js"
+    - "!**/*.min.css"
+
+  path_instructions:
+    - path: "app/**/*.php"
+      instructions: |
+        Review Laravel application code for correctness, clear domain boundaries, secure defaults, authorization, validation, transaction safety, queue safety, and Eloquent performance.
+        Flag risky mass assignment, unsafe request input, authorization gaps, sensitive-data leaks, N+1 query risks, and abstractions that make the code harder to maintain.
+
+    - path: "routes/**/*.php"
+      instructions: |
+        Review route definitions for clear naming, appropriate middleware, authorization boundaries, rate limiting needs, and stable public behavior.
+        Flag routes that expose sensitive behavior without authentication, authorization, or throttling.
+
+    - path: "config/**/*.php"
+      instructions: |
+        Review configuration for secure defaults, environment-driven values, production safety, and no hardcoded secrets.
+        Flag config that could leak sensitive data or behave dangerously in production.
+
+    - path: "database/migrations/**/*.php"
+      instructions: |
+        Review migrations for PostgreSQL compatibility, correct constraints, indexes, reversible changes, safe defaults, and production-safe schema evolution.
+        Flag destructive changes, missing indexes for expected lookups, ambiguous foreign key behavior, and inappropriate cascading deletes.
+
+    - path: "database/factories/**/*.php"
+      instructions: |
+        Review factories for realistic test data, deterministic behavior, valid model state, and avoidance of insecure or misleading defaults.
+
+    - path: "tests/**/*.php"
+      instructions: |
+        Review Pest tests for meaningful assertions, deterministic setup, clear names, feature coverage, security-sensitive paths, and regression value.
+        Flag tests that only assert happy paths when authorization, validation, or failure behavior should also be covered.
+
+    - path: "resources/js/**"
+      instructions: |
+        Review Vue and TypeScript code for type safety, component clarity, accessibility, error states, loading states, and maintainable state boundaries.
+        Flag unsafe assumptions about API data, weak typing, missing user feedback, and inaccessible interactive UI.
+
+    - path: "resources/css/**"
+      instructions: |
+        Review styles for maintainability, accessibility impact, responsive behavior, and consistency with the project UI direction.
+
+    - path: "resources/views/**/*.blade.php"
+      instructions: |
+        Review Blade views for escaped output, clear structure, accessibility, secure links/forms, and no accidental exposure of sensitive data.
+
+    - path: ".github/workflows/**"
+      instructions: |
+        Review GitHub Actions workflows for least privilege, reliable required check names, dependency caching safety, branch-target correctness, and reproducible CI behavior.
+        Flag workflow changes that could weaken protected branch guarantees or skip required quality gates.
+
+    - path: "composer.json"
+      instructions: |
+        Review Composer scripts and dependencies for Laravel compatibility, security, maintainability, and consistency with the existing quality toolchain.
+
+    - path: "package.json"
+      instructions: |
+        Review npm scripts and dependencies for frontend build stability, security, and consistency with the existing Vite/TypeScript toolchain.
+
+    - path: "README.md"
+      instructions: |
+        Review public documentation for accuracy, professional tone, implemented capabilities only, and consistency with current repository behavior.
+        Flag fake badges, future features presented as complete, internal process notes, learning diary language, and claims not supported by the codebase.
+
+    - path: "docs/**/*.md"
+      instructions: |
+        Review public documentation for accuracy, professional tone, useful architecture/security guidance, and consistency with current implementation.
+        Flag internal workflow notes, private planning text, outdated behavior, and future features described as already shipped.
+
+  tools:
+    github-checks:
+      enabled: true
+      timeout_ms: 90000
+    phpstan:
+      enabled: true
+    eslint:
+      enabled: true
+    actionlint:
+      enabled: true
+    markdownlint:
+      enabled: true
+    shellcheck:
+      enabled: true
+    gitleaks:
+      enabled: true
+    semgrep:
+      enabled: true
+    trivy:
+      enabled: true
+
+knowledge_base:
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - "CONTRIBUTING.md"
+      - "SECURITY.md"
+      - "docs/architecture/**/*.md"
+      - "docs/security/**/*.md"
+
+chat:
+  art: false
+  auto_reply: true
+
+issue_enrichment:
+  auto_enrich:
+    enabled: false
+  planning:
+    enabled: false
+  auto_planning:
+    enabled: false
