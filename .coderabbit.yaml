@@ -162,5 +162,5 @@ issue_enrichment:
     enabled: false
   planning:
     enabled: false
-  auto_planning:
-    enabled: false
+    auto_planning:
+      enabled: false
