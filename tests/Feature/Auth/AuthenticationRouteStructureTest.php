@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\Response;
 use Tests\TestCase;
 
 uses(RefreshDatabase::class);
@@ -31,11 +30,12 @@ it('exposes the login screen to guests', function (): void {
         ->assertSee('Login screen placeholder.');
 });
 
-it('accepts the login submission route for guests', function (): void {
+it('keeps the login submission route available for guests', function (): void {
     /** @var TestCase $this */
-    $this->post(route('login'))
-        ->assertStatus(Response::HTTP_ACCEPTED)
-        ->assertSee('Login submission placeholder.');
+    $this->from(route('login'))
+        ->post(route('login'), [])
+        ->assertRedirect(route('login'))
+        ->assertSessionHasErrors(['email', 'password']);
 });
 
 it('protects the logout route from guests', function (): void {
