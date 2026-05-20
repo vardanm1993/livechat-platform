@@ -16,11 +16,12 @@ it('exposes the registration screen to guests', function (): void {
         ->assertSee('Registration screen placeholder.');
 });
 
-it('accepts the registration submission route for guests', function (): void {
+it('keeps the registration submission route available for guests', function (): void {
     /** @var TestCase $this */
-    $this->post(route('register'))
-        ->assertStatus(Response::HTTP_ACCEPTED)
-        ->assertSee('Registration submission placeholder.');
+    $this->from(route('register'))
+        ->post(route('register'), [])
+        ->assertRedirect(route('register'))
+        ->assertSessionHasErrors(['name', 'email', 'password']);
 });
 
 it('exposes the login screen to guests', function (): void {
