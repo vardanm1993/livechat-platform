@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 final class AuthenticatedSessionController extends Controller
 {
@@ -15,13 +18,22 @@ final class AuthenticatedSessionController extends Controller
         return response('Login screen placeholder.');
     }
 
-    public function store(): Response
+    public function store(LoginRequest $request): RedirectResponse
     {
-        return response('Login submission placeholder.', Response::HTTP_ACCEPTED);
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect('/');
     }
 
-    public function destroy(): RedirectResponse
+    public function destroy(Request $request): RedirectResponse
     {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect('/');
     }
 }
