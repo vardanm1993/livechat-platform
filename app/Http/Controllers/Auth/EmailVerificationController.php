@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
+use App\Actions\Security\RecordSecurityEvent;
+use App\Enums\SecurityEventType;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,9 +20,21 @@ final class EmailVerificationController extends Controller
         return response('Email verification notice placeholder.');
     }
 
-    public function verify(EmailVerificationRequest $request): RedirectResponse
-    {
+    public function verify(
+        EmailVerificationRequest $request,
+        RecordSecurityEvent $recordSecurityEvent,
+    ): RedirectResponse {
         $request->fulfill();
+
+        $user = $request->user();
+
+        if ($user instanceof User) {
+            $recordSecurityEvent->handle(
+                type: SecurityEventType::EmailVerified,
+                user: $user,
+                request: $request,
+            );
+        }
 
         return redirect('/');
     }

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Actions\Auth\RegisterUser;
+use App\Actions\Security\RecordSecurityEvent;
+use App\Enums\SecurityEventType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterUserRequest;
 use Illuminate\Auth\Events\Registered;
@@ -19,11 +21,20 @@ final class RegisteredUserController extends Controller
         return response('Registration screen placeholder.');
     }
 
-    public function store(RegisterUserRequest $request, RegisterUser $registerUser): RedirectResponse
-    {
+    public function store(
+        RegisterUserRequest $request,
+        RegisterUser $registerUser,
+        RecordSecurityEvent $recordSecurityEvent,
+    ): RedirectResponse {
         $user = $registerUser->handle($request->validated());
 
         event(new Registered($user));
+
+        $recordSecurityEvent->handle(
+            type: SecurityEventType::UserRegistered,
+            user: $user,
+            request: $request,
+        );
 
         Auth::login($user);
 
