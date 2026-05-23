@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (): Factory|View {
-    return view('welcome');
+    return view('app');
 });
 
 require __DIR__.'/auth.php';
