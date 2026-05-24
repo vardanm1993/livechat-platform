@@ -1,8 +1,3 @@
-import { createApp } from 'vue';
-import App from '@/App.vue';
+import { createInertiaApp } from '@inertiajs/vue3';
 
-const appElement = document.getElementById('app');
-
-if (appElement !== null) {
-  createApp(App).mount(appElement);
-}
+createInertiaApp();

@@ -3,6 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import { bunny } from 'laravel-vite-plugin/fonts';
 import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
+import inertia from '@inertiajs/vite';
 import { fileURLToPath } from 'node:url';
 
 export default defineConfig({
@@ -18,6 +19,7 @@ export default defineConfig({
     }),
     tailwindcss(),
     vue(),
+    inertia(),
   ],
   resolve: {
     alias: {
