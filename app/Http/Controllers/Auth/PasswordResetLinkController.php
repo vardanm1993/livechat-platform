@@ -7,14 +7,17 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ForgotPasswordRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Password;
+use Inertia\Inertia;
+use Inertia\Response;
 
 final class PasswordResetLinkController extends Controller
 {
     public function create(): Response
     {
-        return response('Forgot password screen placeholder.');
+        return Inertia::render('Auth/ForgotPassword', [
+            'status' => session('status'),
+        ]);
     }
 
     public function store(ForgotPasswordRequest $request): RedirectResponse

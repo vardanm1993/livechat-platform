@@ -11,14 +11,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterUserRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use Inertia\Response;
 
 final class RegisteredUserController extends Controller
 {
     public function create(): Response
     {
-        return response('Registration screen placeholder.');
+        return Inertia::render('Auth/Register');
     }
 
     public function store(

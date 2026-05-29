@@ -11,14 +11,17 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use Inertia\Response;
 
 final class AuthenticatedSessionController extends Controller
 {
     public function create(): Response
     {
-        return response('Login screen placeholder.');
+        return Inertia::render('Auth/Login', [
+            'status' => session('status'),
+        ]);
     }
 
     public function store(LoginRequest $request, RecordSecurityEvent $recordSecurityEvent): RedirectResponse
