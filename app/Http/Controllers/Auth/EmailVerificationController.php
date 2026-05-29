@@ -11,13 +11,16 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Inertia\Inertia;
+use Inertia\Response;
 
 final class EmailVerificationController extends Controller
 {
     public function notice(): Response
     {
-        return response('Email verification notice placeholder.');
+        return Inertia::render('Auth/VerifyEmail', [
+            'message' => session('message'),
+        ]);
     }
 
     public function verify(
